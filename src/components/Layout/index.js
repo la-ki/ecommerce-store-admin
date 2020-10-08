@@ -1,12 +1,31 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import Header from "../Header";
+import { Container, Row, Col } from "react-bootstrap";
+import {NavLink} from 'react-router-dom';
 
 const Layout = (props) => {
   return (
     <>
       <Header />
-      <Container>{props.children}</Container>
+      {
+        props.sidebar ? 
+        <Container fluid>
+        <Row>
+          <Col md={2} className="sidebar">
+            <ul>
+              <li><NavLink to={`/`}>Home</NavLink></li>
+              <li><NavLink to={`/products`}>Products</NavLink></li>
+              <li><NavLink to={`/orders`}>Orders</NavLink></li>
+            </ul>
+          </Col>
+          <Col style={{marginLeft: 'auto'}} md={10}>
+          {props.children}
+          </Col>
+        </Row>
+      </Container>
+      : props.children
+      }
+      
     </>
   );
 };
