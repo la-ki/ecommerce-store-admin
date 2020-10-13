@@ -30,7 +30,8 @@ const Category = (props) => {
 
 
     setShow(false);
-  }
+  };
+  
   const handleShow = () => setShow(true);
 
   const renderCategories = (categories) => {
